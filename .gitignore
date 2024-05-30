@@ -3,3 +3,6 @@
 
 # IDE Config
 .idea/
+
+# Django Database
+db.sqlite3
