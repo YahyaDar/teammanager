@@ -2,9 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-
 User = get_user_model()
-
 
 class UserAdminCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
@@ -76,7 +74,7 @@ class RegisterForm(forms.ModelForm):
 
     def save(self, commit=True):
         # Save the provided password in hashed format
-        user = super(self).save(commit=False)
+        user = super(RegisterForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()

@@ -4,14 +4,15 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, email, full_name=None, password=None, profile_pic=None, is_active=True, is_staff=False, is_admin=False):
+    def create_user(self, email, full_name=None, password=None, profile_pic=None, is_active=True, is_staff=False,
+                    is_admin=False):
         if not email:
             raise ValueError("You must provide an email address!")
 
         user = self.model(
             email=self.normalize_email(email),
             full_name=full_name,
-            profile_pic=profile_pic
+            profile_pic=profile_pic,
         )
 
         user.set_password(password)
