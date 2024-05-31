@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Task List</h1>
+  <a href="{% url 'task_create' %}" class="btn btn-primary mb-3">Add Task</a>
+  <ul class="list-group">
+    {% for task in tasks %}
+      <li class="list-group-item">
+        <a href="{% url 'task_detail' task.pk %}">{{ task.name }}</a>
+        (Priority: {{ task.priority }}) -
+        <a href="{% url 'task_update' task.pk %}" class="btn btn-warning btn-sm float-right mr-2">Edit</a>
+        <a href="{% url 'task_delete' task.pk %}" class="btn btn-danger btn-sm float-right">Delete</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
